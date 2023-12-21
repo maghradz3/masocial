@@ -1,5 +1,11 @@
 "use server";
 import { z } from "zod";
+import { auth } from "@/auth";
+import type { Topic } from "@prisma/client";
+import { redirect } from "next/navigation";
+import paths from "@/paths";
+import { db } from "@/db";
+import { revalidatePath } from "next/cache";
 
 const createTopicShcema = z.object({
   name: z
@@ -33,7 +39,39 @@ export async function createTopic(
       errors: result.error.flatten().fieldErrors,
     };
   }
-  return {
-    errors: {},
-  };
+  const session = await auth();
+  if (!session || !session.user) {
+    return {
+      errors: {
+        _form: ["You must be signed in to create a topic"],
+      },
+    };
+  }
+
+  let topic: Topic;
+  try {
+    topic = await db.topic.create({
+      data: {
+        slug: result.data.name,
+        description: result.data.description,
+      },
+    });
+  } catch (error: unknown) {
+    if (error instanceof Error) {
+      return {
+        errors: {
+          _form: [error.message],
+        },
+      };
+    } else {
+      return {
+        errors: {
+          _form: ["An unknown error occured"],
+        },
+      };
+    }
+  }
+
+  revalidatePath("/");
+  redirect(paths.topicShow(topic.slug));
 }
