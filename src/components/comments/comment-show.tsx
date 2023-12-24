@@ -17,6 +17,7 @@ export default async function CommentShow({
   postId,
 }: CommentShowProps) {
   const comments = await fetchCommentsByPostID(postId);
+
   const comment = comments.find((c) => c.id === commentId);
 
   if (!comment) {
