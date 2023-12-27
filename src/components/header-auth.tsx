@@ -1,17 +1,15 @@
 "use client";
 
 import {
-  Navbar,
-  NavbarBrand,
   NavbarItem,
-  NavbarContent,
-  Input,
+  Tooltip,
   Button,
   Avatar,
   Popover,
   PopoverTrigger,
   PopoverContent,
 } from "@nextui-org/react";
+import { FcGoogle } from "react-icons/fc";
 
 import { useSession } from "next-auth/react";
 import * as actions from "@/actions";
@@ -42,16 +40,11 @@ export default function HeaderAuth() {
       <>
         <NavbarItem>
           <form action={actions.signIn}>
-            <Button type="submit" color="secondary" variant="bordered">
-              Sing In
-            </Button>
-          </form>
-        </NavbarItem>
-        <NavbarItem>
-          <form action={actions.signIn}>
-            <Button type="submit" color="primary" variant="flat">
-              Sign Up
-            </Button>
+            <Tooltip content="Log In with Google" closeDelay={100}>
+              <Button isIconOnly type="submit" variant="light">
+                <FcGoogle className=" w-5 h-5 md:w-10 md:h-10" />
+              </Button>
+            </Tooltip>
           </form>
         </NavbarItem>
       </>

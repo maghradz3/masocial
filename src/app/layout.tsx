@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Providers from "./providers";
 import Header from "@/components/header";
+import { ThemeSwitcher } from "@/components/ThemeSwitcher";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -22,7 +23,7 @@ export default function RootLayout({
         <div className="container mx-auto  max-w-screen">
           <Providers>
             <Header />
-            <div className="container mx-auto max-w-7xl">{children}</div>
+            <div className=" container mx-auto max-w-7xl">{children}</div>
           </Providers>
         </div>
       </body>

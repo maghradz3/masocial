@@ -7,7 +7,6 @@ import { z } from "zod";
 import { auth } from "@/auth";
 import { db } from "@/db";
 import paths from "@/paths";
-import path from "path";
 
 const createFormSchema = z.object({
   title: z.string().min(3),

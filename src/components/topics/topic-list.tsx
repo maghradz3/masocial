@@ -5,13 +5,12 @@ import paths from "@/paths";
 
 export default async function TopicList() {
   const topics = await db.topic.findMany();
-  console.log(topics);
 
   const renderedTopics = topics.map((topic) => {
     return (
       <div key={topic.id}>
         <Link href={paths.topicShow(topic.slug)}>
-          <Chip color="warning" variant="shadow">
+          <Chip color="secondary" variant="faded">
             {topic.slug}
           </Chip>
         </Link>
@@ -19,5 +18,7 @@ export default async function TopicList() {
     );
   });
 
-  return <div className="flex flex-row flex-wrap gap-2">{renderedTopics}</div>;
+  return (
+    <div className="flex flex-row flex-wrap gap-2 mt-2">{renderedTopics}</div>
+  );
 }

@@ -5,6 +5,8 @@ import {
   fetchCommentsByPostID,
 } from "@/db/queries/comments";
 import CommentCreateForm from "@/components/comments/comment-create-form";
+import { auth } from "@/auth";
+import { DeleteCommentButton } from "../deletions";
 
 interface CommentShowProps {
   commentId: string;
@@ -16,6 +18,7 @@ export default async function CommentShow({
   commentId,
   postId,
 }: CommentShowProps) {
+  const session = await auth();
   const comments = await fetchCommentsByPostID(postId);
 
   const comment = comments.find((c) => c.id === commentId);
@@ -40,12 +43,23 @@ export default async function CommentShow({
           className="w-10 h-10 rounded-full"
         />
         <div className="flex-1 space-y-3">
-          <p className="text-sm font-medium text-gray-500">
-            {comment.user.name}
-          </p>
-          <p className="text-gray-900">{comment.content}</p>
-
-          <CommentCreateForm postId={comment.postId} parentId={comment.id} />
+          <div className="flex justify-between items-center">
+            <div>
+              <p className="text-sm font-medium text-gray-500">
+                {comment.user.name}
+              </p>
+              <p className="text-gray-900 dark:text-slate-200">
+                {comment.content}
+              </p>
+            </div>
+            {session?.user?.id === comment.userId && (
+              <DeleteCommentButton
+                postId={comment?.postId}
+                commentId={comment?.id}
+              />
+            )}
+          </div>
+          <CommentCreateForm postId={comment?.postId} parentId={comment?.id} />
         </div>
       </div>
       <div className="pl-4">{renderedChildren}</div>
