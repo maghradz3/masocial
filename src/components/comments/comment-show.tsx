@@ -33,7 +33,7 @@ export default async function CommentShow({
   });
 
   return (
-    <div className="p-4 border mt-2 mb-1">
+    <div className="p-4 border border-slate-700 mt-2 mb-1">
       <div className="flex gap-3">
         <Image
           src={comment.user.image || ""}
