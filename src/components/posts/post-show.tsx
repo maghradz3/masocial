@@ -19,7 +19,9 @@ export default async function PostShow({ postId }: PostShowProps) {
   return (
     <div className="m-4">
       <h1 className="text-2xl font-bold my-2">{post.title}</h1>
-      <p className="p-4 border rounded">{post.content}</p>
+      <p className=" text-sm p-2 md:text-xl md:p-4 border rounded">
+        {post.content}
+      </p>
     </div>
   );
 }

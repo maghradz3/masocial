@@ -12,22 +12,39 @@ import SearchInput from "./search-input";
 
 export default function Header() {
   return (
-    <Navbar className="shadow mb-6">
-      <NavbarBrand>
+    // <Navbar className="shadow mb-6">
+    //   <NavbarBrand>
+    //     <Link href="/" className="font-bold">
+    //       Discuss
+    //     </Link>
+    //   </NavbarBrand>
+    //   <NavbarContent justify="center">
+    //     <NavbarItem>
+    //       <Suspense>
+    //         <SearchInput />
+    //       </Suspense>
+    //     </NavbarItem>
+    //   </NavbarContent>
+    //   <NavbarContent justify="end">
+    //     <HeaderAuth />
+    //   </NavbarContent>
+    // </Navbar>
+    <div className="shadow mb-6 flex justify-between items-center px-1 md:px-4">
+      <div>
         <Link href="/" className="font-bold">
           Discuss
         </Link>
-      </NavbarBrand>
-      <NavbarContent justify="center">
-        <NavbarItem>
+      </div>
+      <div>
+        <div>
           <Suspense>
             <SearchInput />
           </Suspense>
-        </NavbarItem>
-      </NavbarContent>
-      <NavbarContent justify="end">
+        </div>
+      </div>
+      <div>
         <HeaderAuth />
-      </NavbarContent>
-    </Navbar>
+      </div>
+    </div>
   );
 }
