@@ -13,6 +13,7 @@ import SearchInput from "./search-input";
 import { ThemeSwitcher } from "./ThemeSwitcher";
 import Image from "next/image";
 import maLogo from "../../public/masocialLogo.png";
+import { FaPeopleGroup } from "react-icons/fa6";
 
 import { motion } from "framer-motion";
 import { fadeIn } from "../../variants";
@@ -28,12 +29,17 @@ export default function Header() {
       <Navbar
         maxWidth="full"
         isBlurred={true}
-        className="bg-#001731 shadow  dark:shadow w-screen dark:shadow-blue-500/50 mb-6 flex  items-center px-1 py-5 md:px-4 "
+        className="bg-#001731 shadow  dark:shadow w-screen dark:shadow-blue-500/50 mb-6 flex  items-center  py-5 md:px-4 "
       >
         <NavbarContent justify="start">
           <NavbarBrand>
-            <Link href="/">
-              <Image width={80} height={80} src={maLogo} alt="masocial logo" />
+            <Link
+              className="flex flex-col md:flex-row justify-center items-center gap-1"
+              href="/"
+            >
+              {/* <Image width={80} height={80} src={maLogo} alt="masocial logo" /> */}
+              <FaPeopleGroup className=" text-md md:text-2xl" />
+              <h1 className=" text-md md:text-2xl">MaSocial</h1>
             </Link>
           </NavbarBrand>
         </NavbarContent>
