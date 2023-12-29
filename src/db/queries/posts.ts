@@ -27,13 +27,7 @@ export function fetchPostBySearchTerm(term: string): Promise<PostListItem[]> {
       _count: { select: { comments: true } },
     },
     where: {
-      OR: [
-        {
-          title: { contains: term },
-          content: { contains: term },
-          user: { name: { contains: term } },
-        },
-      ],
+      OR: [{ title: { contains: term } }, { content: { contains: term } }],
     },
   });
 }

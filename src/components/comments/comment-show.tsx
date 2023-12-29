@@ -22,6 +22,7 @@ export default async function CommentShow({
   const comments = await fetchCommentsByPostID(postId);
 
   const comment = comments.find((c) => c.id === commentId);
+  console.log(comment);
 
   if (!comment) {
     return null;
@@ -54,7 +55,7 @@ export default async function CommentShow({
             </div>
             {session?.user?.id === comment.userId && (
               <DeleteCommentButton
-                postId={comment?.postId}
+                slug={comment?.post?.topic?.slug}
                 commentId={comment?.id}
               />
             )}

@@ -10,7 +10,7 @@ interface DeletePostButtonProps {
 
 interface DeleteCommentButtonProps {
   commentId: string;
-  postId: string;
+  slug: string;
 }
 
 export function DeletePostButton({ postId, slug }: DeletePostButtonProps) {
@@ -28,11 +28,11 @@ export function DeletePostButton({ postId, slug }: DeletePostButtonProps) {
 }
 
 export function DeleteCommentButton({
-  postId,
+  slug,
   commentId,
 }: DeleteCommentButtonProps) {
   const deleteHandler = async () => {
-    await deleteComment(commentId, postId);
+    await deleteComment(commentId, slug);
   };
 
   return (

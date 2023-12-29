@@ -11,7 +11,7 @@ interface PostListProps {
 }
 export default async function PostList({ fetchData }: PostListProps) {
   const session = await auth();
-  console.log(session?.user?.id);
+
   const posts = await fetchData();
   const renderedPosts = posts.map((post) => {
     const topicSlug = post.topic.slug;
