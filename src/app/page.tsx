@@ -19,7 +19,7 @@ export default function Home() {
 
       <div className="col-span-3">
         <MotionDivWrapper direction="up" deley={0.2}>
-          <h1 className="text-2xl m-2 font-bold">
+          <h1 className="text-2xl m-2 font-bold text-slate-200">
             Top
             <span className="text-purple-800"> Posts</span>
           </h1>
