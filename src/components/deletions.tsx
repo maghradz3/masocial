@@ -10,7 +10,7 @@ interface DeletePostButtonProps {
 
 interface DeleteCommentButtonProps {
   commentId: string;
-  slug: string;
+  slug: string | null;
 }
 
 export function DeletePostButton({ postId, slug }: DeletePostButtonProps) {

@@ -16,7 +16,7 @@ export async function deletePost(
   revalidatePath(paths.topicShow(slug));
 }
 
-export async function deleteComment(commentId: string, slug: string) {
+export async function deleteComment(commentId: string, slug: string | null) {
   const comment = await db.comment.findUnique({ where: { id: commentId } });
   if (!comment) {
     throw new Error("Comment not found");
