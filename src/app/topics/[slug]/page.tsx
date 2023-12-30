@@ -16,7 +16,7 @@ export default function TopicShowPage({ params }: TopicShowPageProps) {
         <PostCreateForm slug={slug} />
       </div>
       <div className="col-span-3">
-        <h1 className="text-2xl font-bold mb-2">{slug}</h1>
+        <h1 className="text-2xl font-bold mb-2 text-slate-200">{slug}</h1>
         <PostList fetchData={() => fetchPostByTopicSlug(slug)} />
       </div>
     </div>

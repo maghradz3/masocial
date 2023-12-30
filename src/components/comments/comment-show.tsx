@@ -49,9 +49,7 @@ export default async function CommentShow({
               <p className="text-sm font-medium text-gray-500">
                 {comment.user.name}
               </p>
-              <p className="text-gray-900 dark:text-slate-200">
-                {comment.content}
-              </p>
+              <p className=" text-slate-200">{comment.content}</p>
             </div>
             {session?.user?.id === comment.userId && (
               <DeleteCommentButton

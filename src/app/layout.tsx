@@ -20,10 +20,20 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <div className="container mx-auto  max-w-screen">
+        <div className=" relative container mx-auto  max-w-screen">
           <Providers>
             <Header />
-            <div className=" container mx-auto max-w-7xl">{children}</div>
+            <div
+              className="min-h-screen"
+              style={{
+                backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+                  url(https://images.unsplash.com/photo-1590859808308-3d2d9c515b1a?q=80&w=2074&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)`,
+
+                backgroundColor: "rgba(0, 0, 0, 0.5)", // Semi-transparent black overlay
+              }}
+            >
+              <div className="container mx-auto max-w-7xl">{children}</div>
+            </div>
           </Providers>
         </div>
       </body>
